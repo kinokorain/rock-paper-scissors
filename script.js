@@ -10,11 +10,10 @@ function GetComputerChoice() {
 }
 
 function PlayRound(playerSelection, computerSelection) {
-    console.log("The round has begun!");
     if ((playerSelection === "ROCK") && (computerSelection === "Rock")) {
         return "TRR";
     }
-    if ((playerSelection == "PAPER") && (computerSelection === "Paper")) {
+    if ((playerSelection === "PAPER") && (computerSelection === "Paper")) {
         return "TPP";
     }
     if ((playerSelection === "SCISSORS") && (computerSelection === "Scissors")) {
@@ -24,7 +23,7 @@ function PlayRound(playerSelection, computerSelection) {
     if ((playerSelection === "ROCK") && (computerSelection === "Scissors")) {
         return "WRS";
     }
-    if ((playerSelection == "PAPER") && (computerSelection === "Rock")) {
+    if ((playerSelection === "PAPER") && (computerSelection === "Rock")) {
         return "WPR";
     }
     if ((playerSelection === "SCISSORS") && (computerSelection === "Paper")) {
@@ -34,7 +33,7 @@ function PlayRound(playerSelection, computerSelection) {
     if ((playerSelection === "ROCK") && (computerSelection === "Paper")) {
         return "LRP";
     }
-    if ((playerSelection == "PAPER") && (computerSelection === "Scissors")) {
+    if ((playerSelection === "PAPER") && (computerSelection === "Scissors")) {
         return "LPS";
     }
     if ((playerSelection === "SCISSORS") && (computerSelection === "Rock")) {
@@ -43,12 +42,24 @@ function PlayRound(playerSelection, computerSelection) {
     return "Wrong value"
 }
 
+//(playerChoice.toUpperCase() !== "ROCK") || (playerChoice.toUpperCase() !== "PAPER") || (playerChoice.toUpperCase() !== "SCISSORS")
+
 function PlayGame() {
     let playerChoice, computerChoice, roundResult;
     let playerScore = 0, computerScore = 0;
 
     while (playerScore + computerScore < 5) {
-        playerChoice = prompt("Rock, Paper or Scissors?");
+        let inputFlag = 1;
+        while (inputFlag) {
+            playerChoice = prompt("Rock, Paper or Scissors?");
+            if (playerChoice === null) {
+                console.log("Cancelled the game.");
+                return "C";
+            }
+            if ((playerChoice.toUpperCase() === "ROCK") || (playerChoice.toUpperCase() === "PAPER") || (playerChoice.toUpperCase() === "SCISSORS")) {
+                inputFlag = 0;
+            }
+        }
         computerChoice = GetComputerChoice();
         console.log("You chose " + playerChoice);
         console.log("Computer chose " + computerChoice);
