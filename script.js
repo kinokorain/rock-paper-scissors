@@ -9,6 +9,8 @@ function GetComputerChoice() {
     if (result === 2) return "Scissors";
 }
 
+var playerScore = 0, computerScore = 0;
+
 function PlayRound(playerSelection, computerSelection) {
     if ((playerSelection === "ROCK") && (computerSelection === "Rock")) {
         return "TRR";
@@ -42,124 +44,136 @@ function PlayRound(playerSelection, computerSelection) {
     return "Wrong value"
 }
 
-function PlayGame() {
-    let playerChoice, computerChoice, roundResult;
-    let playerScore = 0, computerScore = 0;
+let showRoundResult = document.querySelector("#round-result");
+let showPlayerScore = document.querySelector("#player-score");
+let showComputerScore = document.querySelector("#computer-score");
+let showGameResult = document.querySelector("#game-result");
+function handleRound(roundResult) {
+    switch (roundResult) {
+        case "TRR":
+            {
+                showRoundResult.textContent = "Tie! Both parties chose Rock.";
+                showPlayerScore.textContent = "Your score: " + playerScore;
+                showComputerScore.textContent = "Opponent's score: " + computerScore;
+                break;
+            }
+        case "TPP":
+            {
+                showRoundResult.textContent = "Tie! Both parties chose Paper";
+                showPlayerScore.textContent = "Your score: " + playerScore;
+                showComputerScore.textContent = "Opponent's score: " + computerScore;
+                break;
+            }
+        case "TSS":
+            {
+                showRoundResult.textContent = "Tie! Both parties chose Scissors";
+                showPlayerScore.textContent = "Your score: " + playerScore;
+                showComputerScore.textContent = "Opponent's score: " + computerScore;
+                break;
+            }
+        case "WRS":
+            {
+                showRoundResult.textContent = "You win! Rock beats Scissors";
+                playerScore++;
+                showPlayerScore.textContent = "Your score: " + playerScore;
+                showComputerScore.textContent = "Opponent's score: " + computerScore;
+                break;
+            }
+        case "WPR":
+            {
+                showRoundResult.textContent = "You win! Paper beats Rock";
+                playerScore++;
+                showPlayerScore.textContent = "Your score: " + playerScore;
+                showComputerScore.textContent = "Opponent's score: " + computerScore;
+                break;
+            }
+        case "WSP":
+            {
+                showRoundResult.textContent = "You win! Scissors beats Paper";
+                playerScore++;
+                showPlayerScore.textContent = "Your score: " + playerScore;
+                showComputerScore.textContent = "Opponent's score: " + computerScore;
+                break;
+            }
+        case "LRP":
+            {
+                showRoundResult.textContent = "You lost. Paper beats Rock";
+                computerScore++;
+                showPlayerScore.textContent = "Your score: " + playerScore;
+                showComputerScore.textContent = "Opponent's score: " + computerScore;
+                break;
+            }
+        case "LPS":
+            {
+                showRoundResult.textContent = "You lost. Scissors beats Paper";
+                computerScore++;
+                showPlayerScore.textContent = "Your score: " + playerScore;
+                showComputerScore.textContent = "Opponent's score: " + computerScore;
+                break;
+            }
+        case "LSR":
+            {
+                showRoundResult.textContent = "You lost. Rock beats Scissors";
+                computerScore++;
+                showPlayerScore.textContent = "Your score: " + playerScore;
+                showComputerScore.textContent = "Opponent's score: " + computerScore;
+                break;
+            }
+        default:
+            {
+                showRoundResult.textContent = "Error. Something went wrong while playing the roud.";
+                break;
+            }
+    }
+    if (playerScore + computerScore >= 5) {
+        if (playerScore > computerScore) {
+            showGameResult.textContent = "Congratulations! You've won :^)";
+            showPlayerScore.textContent = "Your score: " + playerScore;
+            showComputerScore.textContent = "Opponent's score: " + computerScore;
+        }
 
-    while (playerScore + computerScore < 5) {
-        let inputFlag = 1;
-        while (inputFlag) {
-            playerChoice = prompt("Rock, Paper or Scissors?");
-            if (playerChoice === null) {
-                console.log("Cancelled the game.");
-                return "C";
-            }
-            if ((playerChoice.toUpperCase() === "ROCK") || (playerChoice.toUpperCase() === "PAPER") || (playerChoice.toUpperCase() === "SCISSORS")) {
-                inputFlag = 0;
-            }
+        if (playerScore < computerScore) {
+            showGameResult.textContent = "Sadge! You've lost :^(";
+            showPlayerScore.textContent = "Your score: " + playerScore;
+            showComputerScore.textContent = "Opponent's score: " + computerScore;
         }
-        computerChoice = GetComputerChoice();
-        console.log("You chose " + playerChoice);
-        console.log("Computer chose " + computerChoice);
-        roundResult = PlayRound(playerChoice.toUpperCase(), computerChoice);
-        switch (roundResult) {
-            case "TRR":
-                {
-                    console.log("Tie! Both parties chose Rock.");
-                    break;
-                }
-            case "TPP":
-                {
-                    console.log("Tie! Both parties chose Paper");
-                    break;
-                }
-            case "TSS":
-                {
-                    console.log("Tie! Both parties chose Scissors");
-                    break;
-                }
-            case "WRS":
-                {
-                    console.log("You win! Rock beats Scissors");
-                    playerScore++;
-                    console.log("Current score: " + playerScore + " : " + computerScore);
-                    break;
-                }
-            case "WPR":
-                {
-                    console.log("You win! Paper beats Rock");
-                    playerScore++;
-                    console.log("Current score: " + playerScore + " : " + computerScore);
-                    break;
-                }
-            case "WSP":
-                {
-                    console.log("You win! Scissors beats Paper");
-                    playerScore++;
-                    console.log("Current score: " + playerScore + " : " + computerScore);
-                    break;
-                }
-            case "LRP":
-                {
-                    console.log("You lost. Paper beats Rock");
-                    computerScore++;
-                    console.log("Current score: " + playerScore + " : " + computerScore);
-                    break;
-                }
-            case "LPS":
-                {
-                    console.log("You lost. Scissors beats Paper");
-                    computerScore++;
-                    console.log("Current score: " + playerScore + " : " + computerScore);
-                    break;
-                }
-            case "LSR":
-                {
-                    console.log("You lost. Rock beats Scissors");
-                    computerScore++;
-                    console.log("Current score: " + playerScore + " : " + computerScore);
-                    break;
-                }
-            default:
-                {
-                    console.log("Error. Something went wrong while playing the roud.")
-                    break;
-                }
-        }
-    }
-    if (computerScore < playerScore) {
-        console.log("Congratulations! :^) You won!!");
-        return "W";
-    }
-    else {
-        console.log("Sadge :^( You lost the game...");
-        return "L";
+        showRoundResult.textContent = "";
+        showPlayerChoice.textContent = "You chose: "
+        showComputerChoice.textContent = "Opponent chose: "
+        playerScore = 0;
+        computerScore = 0;
     }
 }
-
 
 let rockButton = document.querySelector("#Rock-button");
 let paperButton = document.querySelector("#Paper-button");
 let scissorsButton = document.querySelector("#Scissors-button");
+let roundResult;
+let showPlayerChoice = document.querySelector("#your-choice");
+let showComputerChoice = document.querySelector("#opponent-choice");
 
 rockButton.addEventListener("click", () => {
     let currentComputerChoice = GetComputerChoice()
-    PlayRound("ROCK", currentComputerChoice);
-    document.querySelector("#your-choice").textContent = "You chose: Rock"
-    document.querySelector("#opponent-choice").textContent = "Opponent chose: " + currentComputerChoice;
+    showPlayerChoice.textContent = "You chose: Rock"
+    showComputerChoice.textContent = "Opponent chose: " + currentComputerChoice;
+    roundResult = PlayRound("ROCK", currentComputerChoice);
+    handleRound(roundResult);
 });
 
 
 paperButton.addEventListener("click", () => {
     let currentComputerChoice = GetComputerChoice()
-    PlayRound("PAPER", currentComputerChoice);
-    document.querySelector("#your-choice").textContent = "You chose: Paper"
-    document.querySelector("#opponent-choice").textContent = "Opponent chose: " + currentComputerChoice;
+    showPlayerChoice.textContent = "You chose: Paper"
+    showComputerChoice.textContent = "Opponent chose: " + currentComputerChoice;
+    roundResult = PlayRound("PAPER", currentComputerChoice);
+    handleRound(roundResult);
 });
 
 scissorsButton.addEventListener("click", () => {
     let currentComputerChoice = GetComputerChoice()
-    PlayRound("SCISSORS", currentComputerChoice);
-    document.querySelector("#your-choice").textContent = "You chose: Scissros"
-    document.querySelector("#opponent-choice").textContent = "Opponent chose: " + currentComputerChoice;
+    showPlayerChoice.textContent = "You chose: Scissros"
+    showComputerChoice.textContent = "Opponent chose: " + currentComputerChoice;
+    roundResult = PlayRound("SCISSORS", currentComputerChoice);
+    handleRound(roundResult);
 });
+
