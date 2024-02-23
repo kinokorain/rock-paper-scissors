@@ -42,8 +42,6 @@ function PlayRound(playerSelection, computerSelection) {
     return "Wrong value"
 }
 
-//(playerChoice.toUpperCase() !== "ROCK") || (playerChoice.toUpperCase() !== "PAPER") || (playerChoice.toUpperCase() !== "SCISSORS")
-
 function PlayGame() {
     let playerChoice, computerChoice, roundResult;
     let playerScore = 0, computerScore = 0;
@@ -139,4 +137,29 @@ function PlayGame() {
     }
 }
 
-PlayGame();
+
+let rockButton = document.querySelector("#Rock-button");
+let paperButton = document.querySelector("#Paper-button");
+let scissorsButton = document.querySelector("#Scissors-button");
+
+rockButton.addEventListener("click", () => {
+    let currentComputerChoice = GetComputerChoice()
+    PlayRound("ROCK", currentComputerChoice);
+    document.querySelector("#your-choice").textContent = "You chose: Rock"
+    document.querySelector("#opponent-choice").textContent = "Opponent chose: " + currentComputerChoice;
+});
+
+
+paperButton.addEventListener("click", () => {
+    let currentComputerChoice = GetComputerChoice()
+    PlayRound("PAPER", currentComputerChoice);
+    document.querySelector("#your-choice").textContent = "You chose: Paper"
+    document.querySelector("#opponent-choice").textContent = "Opponent chose: " + currentComputerChoice;
+});
+
+scissorsButton.addEventListener("click", () => {
+    let currentComputerChoice = GetComputerChoice()
+    PlayRound("SCISSORS", currentComputerChoice);
+    document.querySelector("#your-choice").textContent = "You chose: Scissros"
+    document.querySelector("#opponent-choice").textContent = "Opponent chose: " + currentComputerChoice;
+});

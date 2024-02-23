@@ -5,12 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Document</title>
 </head>
 
 <body>
-
+    <div class="choose-item">
+        <button id="Rock-button" class="choice-button">
+            Rock
+        </button>
+        <button id="Paper-button" class="choice-button">
+            Paper
+        </button>
+        <button id="Scissors-button" class="choice-button">
+            Scissors
+        </button>
+    </div>
+    <div class="score">
+        <p>You're score:</p>
+        <p>Opponents score:</p>
+    </div>
+    <div class="choices-container">
+        <div class="your-choice">
+            <p id="your-choice">You chose: </p>
+        </div>
+        <div class="opponent-choice">
+            <p id="opponent-choice">Opponent chose: </p>
+        </div>
+    </div>
 </body>
 
 </html>
