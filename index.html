@@ -6,40 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Document</title>
+    <title>Rock, Paper, Scissors!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <h1>Rock, Paper, Scissors</h1>
-    <div class="choose-item">
-        <button id="Rock-button" class="choice-button">
-            Rock
-        </button>
-        <button id="Paper-button" class="choice-button">
-            Paper
-        </button>
-        <button id="Scissors-button" class="choice-button">
-            Scissors
-        </button>
-    </div>
-    <div class="score">
-        <p id="player-score">Your score:</p>
-        <p id="computer-score">Opponent's score:</p>
-    </div>
-    <div class="choices-container">
-        <div class="your-choice">
-            <p id="your-choice">You chose: </p>
+    <div class="container">
+        <h1>Rock, Paper, Scissors!</h1>
+
+        <div class="score">
+            <p id="player-score">Your score:</p>
+            <p id="computer-score">Opponent's score:</p>
         </div>
-        <div class="opponent-choice">
-            <p id="opponent-choice">Opponent chose: </p>
+        <div class="choice-container">
+            <div class="your-choice">
+                <p id="your-choice">You chose: </p>
+            </div>
+            <div class="opponent-choice">
+                <p id="opponent-choice">Opponent chose: </p>
+            </div>
+        </div>
+        <div class="round-result-container">
+            <p id="round-result"></p>
+        </div>
+        <div class="game-result-container">
+            <h2 id="game-result"></h2>
+        </div>
+        <div class="choose-item">
+            <button id="Rock-button" class="choice-button">
+                Rock
+            </button>
+            <button id="Paper-button" class="choice-button">
+                Paper
+            </button>
+            <button id="Scissors-button" class="choice-button">
+                Scissors
+            </button>
         </div>
     </div>
-    <div class="round-result-container">
-        <p id="round-result"></p>
-    </div>
-    <div class="game-result-container">
-        <h2 id="game-result"></h2>
-    </div>
+
 </body>
 
 </html>

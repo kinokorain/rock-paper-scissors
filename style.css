@@ -1,3 +1,61 @@
 body {
-    background-color: thistle;
+    background-color: #F9DCE8;
+    text-align: center;
+    color: #3A405A;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+}
+
+.container {
+    width: 80vw;
+    height: 70vh;
+}
+
+.score {
+    text-decoration: underline;
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.choice-container {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.choose-item {
+    position: absolute;
+    width: 100%;
+    top: 500px;
+    left: 0;
+    /* outline: solid 1px coral; */
+}
+
+.choice-button {
+    background-color: #3A405A;
+    border: solid #fff 2px;
+    width: 15%;
+    height: 7vh;
+    font-family: inherit;
+    font-size: .8em;
+    color: white;
+    margin-inline: 1em;
+    transition: all .3s;
+}
+
+.choice-button:hover {
+    transform: translateY(-10px);
+    transform: scale(1.1);
 }

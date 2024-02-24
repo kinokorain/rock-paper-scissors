@@ -49,9 +49,11 @@ let showPlayerScore = document.querySelector("#player-score");
 let showComputerScore = document.querySelector("#computer-score");
 let showGameResult = document.querySelector("#game-result");
 function handleRound(roundResult) {
+    showGameResult.textContent = "";
     switch (roundResult) {
         case "TRR":
             {
+                showRoundResult.setAttribute("style", "color: yellow;")
                 showRoundResult.textContent = "Tie! Both parties chose Rock.";
                 showPlayerScore.textContent = "Your score: " + playerScore;
                 showComputerScore.textContent = "Opponent's score: " + computerScore;
@@ -59,13 +61,16 @@ function handleRound(roundResult) {
             }
         case "TPP":
             {
+                showRoundResult.setAttribute("style", "color: yellow;")
                 showRoundResult.textContent = "Tie! Both parties chose Paper";
                 showPlayerScore.textContent = "Your score: " + playerScore;
                 showComputerScore.textContent = "Opponent's score: " + computerScore;
+
                 break;
             }
         case "TSS":
             {
+                showRoundResult.setAttribute("style", "color: yellow;")
                 showRoundResult.textContent = "Tie! Both parties chose Scissors";
                 showPlayerScore.textContent = "Your score: " + playerScore;
                 showComputerScore.textContent = "Opponent's score: " + computerScore;
@@ -73,6 +78,7 @@ function handleRound(roundResult) {
             }
         case "WRS":
             {
+                showRoundResult.setAttribute("style", "color: darkgreen;")
                 showRoundResult.textContent = "You win! Rock beats Scissors";
                 playerScore++;
                 showPlayerScore.textContent = "Your score: " + playerScore;
@@ -81,6 +87,7 @@ function handleRound(roundResult) {
             }
         case "WPR":
             {
+                showRoundResult.setAttribute("style", "color: darkgreen;")
                 showRoundResult.textContent = "You win! Paper beats Rock";
                 playerScore++;
                 showPlayerScore.textContent = "Your score: " + playerScore;
@@ -89,6 +96,7 @@ function handleRound(roundResult) {
             }
         case "WSP":
             {
+                showRoundResult.setAttribute("style", "color: darkgreen;")
                 showRoundResult.textContent = "You win! Scissors beats Paper";
                 playerScore++;
                 showPlayerScore.textContent = "Your score: " + playerScore;
@@ -97,6 +105,7 @@ function handleRound(roundResult) {
             }
         case "LRP":
             {
+                showRoundResult.setAttribute("style", "color: indianred;");
                 showRoundResult.textContent = "You lost. Paper beats Rock";
                 computerScore++;
                 showPlayerScore.textContent = "Your score: " + playerScore;
@@ -105,6 +114,8 @@ function handleRound(roundResult) {
             }
         case "LPS":
             {
+                showRoundResult.setAttribute("style", "color: indianred;");
+
                 showRoundResult.textContent = "You lost. Scissors beats Paper";
                 computerScore++;
                 showPlayerScore.textContent = "Your score: " + playerScore;
@@ -113,6 +124,7 @@ function handleRound(roundResult) {
             }
         case "LSR":
             {
+                showRoundResult.setAttribute("style", "color: indianred;");
                 showRoundResult.textContent = "You lost. Rock beats Scissors";
                 computerScore++;
                 showPlayerScore.textContent = "Your score: " + playerScore;
@@ -121,19 +133,20 @@ function handleRound(roundResult) {
             }
         default:
             {
+                showRoundResult.setAttribute("style", "color: brown;");
                 showRoundResult.textContent = "Error. Something went wrong while playing the roud.";
                 break;
             }
     }
     if (playerScore + computerScore >= 5) {
         if (playerScore > computerScore) {
-            showGameResult.textContent = "Congratulations! You've won :^)";
+            showGameResult.textContent = "Congratulations! You've won the game :^)";
             showPlayerScore.textContent = "Your score: " + playerScore;
             showComputerScore.textContent = "Opponent's score: " + computerScore;
         }
 
         if (playerScore < computerScore) {
-            showGameResult.textContent = "Sadge! You've lost :^(";
+            showGameResult.textContent = "Sadge! You've lost the game :^(";
             showPlayerScore.textContent = "Your score: " + playerScore;
             showComputerScore.textContent = "Opponent's score: " + computerScore;
         }
@@ -171,7 +184,7 @@ paperButton.addEventListener("click", () => {
 
 scissorsButton.addEventListener("click", () => {
     let currentComputerChoice = GetComputerChoice()
-    showPlayerChoice.textContent = "You chose: Scissros"
+    showPlayerChoice.textContent = "You chose: Scissors"
     showComputerChoice.textContent = "Opponent chose: " + currentComputerChoice;
     roundResult = PlayRound("SCISSORS", currentComputerChoice);
     handleRound(roundResult);
